@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
 
     # print out final list
-    printer()
+    printer(final_list)
     
     # clean up 
     clean_up()
