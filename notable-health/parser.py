@@ -99,8 +99,7 @@ if __name__ == "__main__":
             if re_number_n.search(l):
                 final_list = insert_at_number_n(l, final_list)
             if re_number_next.search(l):
-                append_number_next(l, final_list)
-
+                final_list = append_number_next(l, final_list)
 
 
     # clean up 
