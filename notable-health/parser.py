@@ -67,6 +67,10 @@ def list_copier(old_list):
     new_list = old_list[:]
     return new_list
 
+def printer(final_list):
+    for i in range(0, len(final_list)):
+        count = i + 1
+        print (str(count) + " " + str(final_list[i]))
 
 if __name__ == "__main__":
     #main goes here 
@@ -91,6 +95,7 @@ if __name__ == "__main__":
     insert_new_line_breaks()
 
 
+    # Should be a function 
     with open('./final','r') as file: 
         lines = file.readlines()
 
@@ -102,13 +107,8 @@ if __name__ == "__main__":
                 final_list = append_number_next(l, final_list)
 
 
-
-    for i in range(0, len(final_list)):
-        count = i + 1
-        print (str(count) + " " + str(final_list[i]))
-
+    # print out final list
+    printer()
+    
     # clean up 
     clean_up()
-
-
-
