@@ -102,6 +102,11 @@ if __name__ == "__main__":
                 final_list = append_number_next(l, final_list)
 
 
+
+    for i in range(0, len(final_list)):
+        count = i + 1
+        print (str(count) + " " + str(final_list[i]))
+
     # clean up 
     clean_up()
 
