@@ -10,6 +10,7 @@ from typing import final
 
 def insert_at_number_n(l, numbered_list):
     # There's a better way but it's late and I'm rushing
+    # Doesn't take into account repeat number n's 
     if 'one' in l:
         numbered_list.insert(0, l)
     if 'two' in l:
@@ -32,10 +33,12 @@ def insert_at_number_n(l, numbered_list):
     return (numbered_list)
 
 def append_number_next(l, numbered_list):
+    # Straight forward, if number next just append to list and return 
     numbered_list.append(l)
     return (numbered_list)
 
 def clean_up():
+    # always good to do housekeeping. 
     os.remove("cleaned")
     os.remove("final")
 
@@ -73,13 +76,6 @@ def printer(final_list):
         print (str(count) + " " + str(final_list[i]))
 
 if __name__ == "__main__":
-    #main goes here 
-    # 1. read in file 
-    # 2. split text from start to '.' append to list 
-    # 3. parse item in list
-    # 4. make decision on time in list 
-
-
     # ignoring case seems wise. 
     re_number_n = re.compile('Number\s(one|two|three|four|five|six|seven|eight|nine)', re.IGNORECASE)
     re_number_next = re.compile('Number next', re.IGNORECASE)
@@ -87,7 +83,7 @@ if __name__ == "__main__":
     split_text = []
     final_list = [] 
 
-    # send remove newline characters
+    # send remove bad newline characters
     remove_bad_line_breaks()
 
     # split file into lines on the period
