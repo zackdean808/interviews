@@ -4,19 +4,23 @@
 import os
 import sys
 import argparse
-import re 
+import re
+from typing import final 
 
 
-def append_number_n(numbered_list):
-    return 0 
+def insert_at_number_n(numbered_list):
+    print ("insert_at_number_n")
+    print (numbered_list)
 
 def append_number_next(numbered_list):
-    return 0 
+    print ("append_number_next")
+    print (numbered_list)
 
 def clean_up():
     os.remove("cleaned")
+    os.remove("final")
 
-def prep_file_for_splitting():
+def remove_bad_line_breaks():
     # open file for reading 
     with open(sys.argv[1], 'r') as file:
         fd = file.read()
@@ -27,10 +31,19 @@ def prep_file_for_splitting():
     # write cleaned file for splitting 
     with open('cleaned', 'w') as file:
         file.write(fd) 
+
+def insert_new_line_breaks():
+    # open file for reading 
+    with open(sys.argv[1], 'r') as file:
+        fd = file.read()
+
+    # Assume '.' means end of line 
+    fd = fd.replace('.', '\n')
+
+    # write cleaned file for splitting 
+    with open('final', 'w') as file:
+        file.write(fd) 
     
-    print("File written")
-
-
 
 if __name__ == "__main__":
     #main goes here 
@@ -41,19 +54,29 @@ if __name__ == "__main__":
 
 
     # ignoring case seems wise. 
-    re_number_n = re.compile('Number (one|two|three|four|five|six|seven|eight|nine)\.$', re.IGNORECASE)
-    re_number_next = re.compile('Number next\.$', re.IGNORECASE)
+    re_number_n = re.compile('Number\s(one|two|three|four|five|six|seven|eight|nine)', re.IGNORECASE)
+    re_number_next = re.compile('Number next', re.IGNORECASE)
     re_split_text = re.compile('/.+?\./')
     split_text = []
     final_list = [] 
 
     # send remove newline characters
-    prep_file_for_splitting()
+    remove_bad_line_breaks()
 
-    # split file into lines on the period 
-    
+    # split file into lines on the period
+    # TODO: there is abug in this where the line breaks aren't clean, but deal with later
+    insert_new_line_breaks()
 
 
+    with open('./final','r') as file: 
+        lines = file.readlines()
+
+        for l in lines:
+            # print (l)
+            if re_number_n.search(l):
+                insert_at_number_n(l)
+            if re_number_next.search(l):
+                append_number_next(l)
 
 
 
