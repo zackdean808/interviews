@@ -7,8 +7,11 @@ import argparse
 import re 
 
 
+def append_number_n(numbered_list):
+    return 0 
 
-
+def append_number_next(numbered_list):
+    return 0 
 
 
 if __name__ == "__main__":
@@ -21,5 +24,8 @@ if __name__ == "__main__":
     # I know I should put this else where but it's a quick note
 
     with open(sys.argv[1], 'r') as file:
-            print(file.read())
+        lines = file.readlines()
+
+        for l in lines:
+            print(l)
     
