@@ -23,9 +23,18 @@ if __name__ == "__main__":
     #   3a. Append line to list  
     # I know I should put this else where but it's a quick note
 
+    # ignoring case seems wise. 
+    re_number_n = re.compile('Number (one|two|three|four|five|six|seven|eight|nine)\.$', re.IGNORECASE)
+    re_number_next = re.compile('Number next\.$', re.IGNORECASE)
+
+
     with open(sys.argv[1], 'r') as file:
         lines = file.readlines()
 
         for l in lines:
-            print(l)
-    
+            if re_number_n.match(l):
+                print ("number n")
+            if re_number_next.match(l):
+                print ("number next")
+            else:
+                print ("no match")
