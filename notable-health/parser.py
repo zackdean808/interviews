@@ -8,13 +8,32 @@ import re
 from typing import final 
 
 
-def insert_at_number_n(numbered_list):
-    print ("insert_at_number_n")
-    print (numbered_list)
+def insert_at_number_n(l, numbered_list):
+    # There's a better way but it's late and I'm rushing
+    if 'one' in l:
+        numbered_list.insert(0, l)
+    if 'two' in l:
+        numbered_list.insert(1, l)
+    if 'three' in l:
+        numbered_list.insert(2, l)
+    if 'four' in l:
+        numbered_list.insert(3, l)
+    if 'five' in l:
+        numbered_list.insert(4, l)
+    if 'six' in l:
+        numbered_list.insert(5, l)
+    if 'seven' in l:
+        numbered_list.insert(6, l)
+    if 'eight' in l:
+        numbered_list.insert(7, l)
+    if 'nine' in l:
+        numbered_list.insert(8, l)
+    
+    return (numbered_list)
 
-def append_number_next(numbered_list):
-    print ("append_number_next")
-    print (numbered_list)
+def append_number_next(l, numbered_list):
+
+    return (numbered_list)
 
 def clean_up():
     os.remove("cleaned")
@@ -44,6 +63,10 @@ def insert_new_line_breaks():
     with open('final', 'w') as file:
         file.write(fd) 
     
+def list_copier(old_list):
+    new_list = old_list[:]
+    return new_list
+
 
 if __name__ == "__main__":
     #main goes here 
@@ -74,9 +97,9 @@ if __name__ == "__main__":
         for l in lines:
             # print (l)
             if re_number_n.search(l):
-                insert_at_number_n(l)
+                final_list = insert_at_number_n(l, final_list)
             if re_number_next.search(l):
-                append_number_next(l)
+                append_number_next(l, final_list)
 
 
 
