@@ -1,4 +1,4 @@
-[200~"""
+"""
 Sports evernt are provided by data providers, and Prophet ingest the data and them display them on our site. Assuming that we get such events from CSV strings, and each one of them have following values, for example 
 
 "tournament_name, competitor_1, completitor_2, start_time, city, state \n
